@@ -69,12 +69,17 @@ for idx, row in merged.iterrows():
                 fontsize=10, ha='center', va='center', color='black', fontweight='bold')
 
 # --- STEP 8: Add Title and Legend ---
-ax.set_title('Public EV Charger Stations/100 Miles in the U.S. (2024)',
+ax.set_title('Public EV Charger Station Density in the U.S. (2024)',
              fontdict={'fontsize': 18, 'fontweight': 'bold', 'color': '#333333'},
              pad=20)
+fig.text(
+    0.5, 0.83,  # Adjust Y-coordinate to move it below title
+    "(Stations per 100 miles of public road lanes)", 
+    fontsize=14, color='gray', ha='center'
+)
 
 legend_patches = [
-    mpatches.Patch(color='#d73027', label='< 1 Chargers'),
+    mpatches.Patch(color='#d73027', label='< 1 Charger'),
     mpatches.Patch(color='#fee08b', label='1-5 Chargers'),
     mpatches.Patch(color='#a6d96a', label='5-10 Chargers'),
     mpatches.Patch(color='#1a9850', label='10+ Chargers'),
@@ -84,8 +89,7 @@ legend_patches = [
 ax.legend(handles=legend_patches, loc='best', fontsize=10, title='Public EV Charger Density')
 fig.text(
     0.1, 0.3,  
-    "Source: U.S. Department of Energy & Department of Transportation\n"
-    "EV charger density calculated as total stations per 100 miles of public road lanes.",
+    "Source: U.S. Department of Energy & Department of Transportation",
     fontsize=10, color='gray', ha='left', va='center'
 )
 
