@@ -69,22 +69,28 @@ for idx, row in merged.iterrows():
                 fontsize=10, ha='center', va='center', color='black', fontweight='bold')
 
 # --- STEP 8: Add Title and Legend ---
-ax.set_title('Public EV Charger Stations/100 Miles in the U.S.',
+ax.set_title('Public EV Charger Stations/100 Miles in the U.S. (2024)',
              fontdict={'fontsize': 18, 'fontweight': 'bold', 'color': '#333333'},
              pad=20)
 
 legend_patches = [
-    mpatches.Patch(color='#d73027', label='<1 Chargers/100 miles'),
-    mpatches.Patch(color='#fee08b', label='1-5 Chargers/100 miles'),
-    mpatches.Patch(color='#a6d96a', label='5-10 Chargers/100 miles'),
-    mpatches.Patch(color='#1a9850', label='10+ Chargers/100 miles'),
+    mpatches.Patch(color='#d73027', label='< 1 Chargers'),
+    mpatches.Patch(color='#fee08b', label='1-5 Chargers'),
+    mpatches.Patch(color='#a6d96a', label='5-10 Chargers'),
+    mpatches.Patch(color='#1a9850', label='10+ Chargers'),
     #mpatches.Patch(color='#f0f0f0', label='No Data')
 ]
 
 ax.legend(handles=legend_patches, loc='best', fontsize=10, title='Public EV Charger Density')
+fig.text(
+    0.1, 0.3,  
+    "Source: U.S. Department of Energy & Department of Transportation\n"
+    "EV charger density calculated as total stations per 100 miles of public road lanes.",
+    fontsize=10, color='gray', ha='left', va='center'
+)
 
 # --- STEP 9: Save and Show Map ---
 fig.set_facecolor('#f7f7f7')
 plt.tight_layout()
-plt.savefig('EVSE_Stations_Map_with_Labels_Arial.png', dpi=300)
+plt.savefig('EVSE_Stations_Map_with_Labels.png', dpi=300)
 plt.show()
